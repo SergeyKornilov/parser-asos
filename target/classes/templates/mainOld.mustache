@@ -1,0 +1,26 @@
+<html>
+
+<body>
+<div>
+    <form method="post">
+        <input type="text" name="url" placeholder="Введите url" />
+        <button type="submit">Добавить</button>
+    </form>
+
+</div>
+
+
+{{#products}}
+<div>
+    <b>{{id}}</b>
+    <span>{{productCode}}</span>
+    <span>{{name}}</span>
+    <span>{{dateAdd}}</span>
+    <span>{{idCategory}}</span>
+    <span>{{urlImg}}</span>
+    <img src="{{urlImg}}">
+
+</div>
+{{/products}}
+</body>
+</html>
