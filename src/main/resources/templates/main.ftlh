@@ -1,14 +1,19 @@
-<html>
-<body>
+<#import "parts/common.ftlh" as a>
 
+<@a.page>
 
-<div>
-
-    <a href="service">Service page</a>
+<div class="container">
+    <div class="row">
+     <a href="service">Service page</a>
+    </div>
 </div>
 
 <#list products as product>
-
+    <container>
+        <row>
+            <col></col>
+        </row>
+    </container>
     <ul>
         <li><p>id</p>${product.id}</li>
         <li><p>код товара</p>${product.productCode}</li>
@@ -20,5 +25,4 @@
     </ul>
     <hr align="left" size="3" color="#0000dd" />
 </#list>
-</body>
-</html>
+</@a.page>
