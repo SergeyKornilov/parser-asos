@@ -21,8 +21,9 @@
                     <li><p>дата добавления</p>${product.dateAdd}</li>
                     <li><p>id категории</p>${product.idCategory}</li>
                     <li><p>ссылка</p>${product.productUrl}</li>
-                    <li><p>картинка</p><img src="${product.urlImg}"></li>
                 </ul>
+                    <p>картинка</p><img src="${product.urlImg}">
+
 <#--            </div>-->
 
 <#--        </div>-->

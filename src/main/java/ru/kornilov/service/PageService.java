@@ -17,7 +17,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 @Service
-public class PageService    extends Thread {
+public class PageService extends Thread {
 
     @Autowired
     private ImgService imgService;
