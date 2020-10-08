@@ -4,6 +4,9 @@ package ru.kornilov.service;
 - возвразает url с параметрами для перехода на соответствующий регион
  */
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class SetRegion {
 
     public static String setRegion(String url, String region) {

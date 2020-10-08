@@ -9,7 +9,6 @@ import ru.kornilov.entities.Page;
 import ru.kornilov.entities.Product;
 import ru.kornilov.repos.ProductsRepo;
 
-import javax.transaction.Transactional;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Date;
@@ -45,7 +44,7 @@ public class PageService extends Thread {
         parsePage();
     }
 
-    Elements productCartHtml;
+    private Elements productCartHtml;
 
 
     public void parsePage(){

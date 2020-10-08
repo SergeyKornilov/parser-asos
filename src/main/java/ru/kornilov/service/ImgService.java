@@ -27,7 +27,7 @@ public class ImgService {
     }
 
     public void checkImg(){
-        List<Product> products = (ArrayList) productsRepo.findAll();                                                        //выгружаем все товары
+        List<Product> products = (List<Product>) productsRepo.findAll();                                                        //выгружаем все товары
 
         for (Product product :                                                                                              //проходим по товарам
                 products) {
@@ -48,6 +48,8 @@ public class ImgService {
             e.printStackTrace();
         }
 
+
+        assert htmlProduct != null;
         Elements code = htmlProduct.select("div.product-carousel>img");                                              //достаем img
 
         System.out.println(code.attr("src"));

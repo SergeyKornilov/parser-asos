@@ -1,7 +1,7 @@
 package ru.kornilov.entities;
 
 import javax.persistence.*;
-import java.util.List;
+
 
 @Entity
 @Table(name = "categories")
