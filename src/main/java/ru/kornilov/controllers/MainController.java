@@ -43,6 +43,7 @@ public class MainController {
         model.put("products",products);
 
         return "main";
-
     }
+
+
 }

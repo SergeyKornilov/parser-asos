@@ -40,9 +40,7 @@ public class SetRegion {
                 break;
             case ("Latvia"):
                 urlRegion = url + "&browseCountry=LV&browseCurrency=EUR";
-
                 break;
-
 
             case ("France"):
                 stringBuilder = new StringBuilder(url);
@@ -65,8 +63,6 @@ public class SetRegion {
                 stringBuilder.insert(21, "us/");
                 urlRegion = String.valueOf(stringBuilder);
                 break;
-
-
         }
 
 
