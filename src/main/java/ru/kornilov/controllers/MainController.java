@@ -6,8 +6,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import ru.kornilov.entities.Domains;
 import ru.kornilov.entities.Product;
+import ru.kornilov.repos.DomainRepo;
 import ru.kornilov.repos.ProductsRepo;
+import ru.kornilov.service.DomainService;
 import ru.kornilov.service.PageService;
 
 import java.util.Map;
@@ -19,6 +22,10 @@ public class MainController {
     private ProductsRepo productsRepo;
     @Autowired
     private PageService pageService;
+    @Autowired
+    private DomainService domainService;
+    @Autowired
+    private DomainRepo domainRepo;
 
     @GetMapping
     public String greeting(Map<String, Object> model) {
@@ -31,19 +38,27 @@ public class MainController {
 
     @GetMapping("/service")
     public String service(Map<String, Object> model){
+
+        Iterable<Domains> domains = domainRepo.findAll();
+        model.put("domains", domains);
+
         return "service";
     }
     @PostMapping("/service")
-    public String parse(@RequestParam String url, Map<String, Object> model){
+    public String parse(@RequestParam String url, /*String domainName,*/ Map<String, Object> model){
 
-        pageService.setUrlEnter(url);
-        pageService.start();
+        if (url != null) {
+            pageService.setUrlEnter(url);
+            pageService.start();
 
-        Iterable<Product> products = productsRepo.findAll();
-        model.put("products",products);
+//            Iterable<Product> products = productsRepo.findAll();
+//            model.put("products", products);
+        }
 
-        return "main";
+//        if (domainName != null){
+//            domainService.addDomain(domainName);
+//        }
+
+        return "service";
     }
-
-
 }

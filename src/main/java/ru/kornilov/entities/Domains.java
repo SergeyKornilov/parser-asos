@@ -1,7 +1,10 @@
 package ru.kornilov.entities;
 
+import org.springframework.stereotype.Component;
+
 import javax.persistence.*;
 
+@Component
 @Entity
 @Table(name = "domains")
 public class Domains {
