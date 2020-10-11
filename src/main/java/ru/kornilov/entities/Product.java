@@ -7,7 +7,8 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Component
+
+
 @Table(name = "products")
 public class Product {
 

@@ -6,7 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import ru.kornilov.entities.Domains;
+import ru.kornilov.entities.Domain;
 import ru.kornilov.entities.Product;
 import ru.kornilov.repos.DomainRepo;
 import ru.kornilov.repos.ProductsRepo;
@@ -39,7 +39,7 @@ public class MainController {
     @GetMapping("/service")
     public String service(Map<String, Object> model){
 
-        Iterable<Domains> domains = domainRepo.findAll();
+        Iterable<Domain> domains = domainRepo.findAll();
         model.put("domains", domains);
 
         return "service";

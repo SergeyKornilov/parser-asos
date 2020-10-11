@@ -4,10 +4,10 @@ import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 
-@Component
+
 @Entity
 @Table(name = "domains")
-public class Domains {
+public class Domain {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,11 +16,11 @@ public class Domains {
     @Column(name = "name_domain")
     private String nameDomain;
 
-    public Domains(String nameDomain) {
+    public Domain(String nameDomain) {
         this.nameDomain = nameDomain;
     }
 
-    public Domains() {
+    public Domain() {
     }
 
     public int getId() {
