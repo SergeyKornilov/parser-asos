@@ -1,9 +1,8 @@
 package ru.kornilov.controllers;
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import ru.kornilov.entities.Domain;
@@ -45,20 +44,33 @@ public class MainController {
         return "service";
     }
     @PostMapping("/service")
-    public String parse(@RequestParam String url, /*String domainName,*/ Map<String, Object> model){
-
-        if (url != null) {
+    public String parse(@RequestParam String url,
+                        @RequestParam String domainName,
+                        Map<String, Object> model){
+        if (url != "") {
             pageService.setUrlEnter(url);
             pageService.start();
-
-//            Iterable<Product> products = productsRepo.findAll();
-//            model.put("products", products);
         }
 
-//        if (domainName != null){
-//            domainService.addDomain(domainName);
-//        }
+        if (domainName != "") {
+            Domain domain = new Domain();
+            domain.setNameDomain(domainName);
+            domainService.addDomain(domain);
+        }
+
+        Iterable<Domain> domains = domainRepo.findAll();
+        model.put("domains", domains);
 
         return "service";
     }
+
+    @GetMapping("/service/delete")
+    public String deleteDomain(@ModelAttribute("name") String nameDomain, Map<String, Object> model){
+
+        domainService.deleteDomain(nameDomain);
+
+
+        return "redirect:/service";
+    }
+
 }

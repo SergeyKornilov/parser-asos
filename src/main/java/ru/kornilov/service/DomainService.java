@@ -25,4 +25,15 @@ public class DomainService {
         domainRepo.save(domain);
         return true;
     }
+
+    public boolean deleteDomain(String nameDomain){
+        Domain domainFromDb = domainRepo.findByNameDomain(nameDomain);
+
+        if (domainFromDb != null){
+            domainRepo.delete(domainFromDb);
+            return true;
+        }
+        return false;
+    }
+
 }

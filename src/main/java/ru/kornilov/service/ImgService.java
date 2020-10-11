@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /*
-если url картинки пустой парсим картинку со страницы товара
+if img`s url is null, parse img from product`s page
  */
 
 @Service
@@ -27,12 +27,12 @@ public class ImgService {
     }
 
     public void checkImg(){
-        List<Product> products = (List<Product>) productsRepo.findAll();                                                        //выгружаем все товары
+        List<Product> products = (List<Product>) productsRepo.findAll();                                                        //get all products
 
-        for (Product product :                                                                                              //проходим по товарам
+        for (Product product :
                 products) {
 
-                if (product.getUrlImg().equals("")) {                                                                       //если url картинки пустой
+                if (product.getUrlImg().equals("")) {
                     product.setUrlImg(updateImg(product.getProductUrl()));
                     productsRepo.save(product);
                 }
@@ -43,16 +43,16 @@ public class ImgService {
         Document htmlProduct = null;
 
         try {
-            htmlProduct = Jsoup.parse(new URL(productUrl), 10000);                                                //парсим страницу
+            htmlProduct = Jsoup.parse(new URL(productUrl), 10000);
         } catch (IOException e) {
             e.printStackTrace();
         }
 
 
         assert htmlProduct != null;
-        Elements code = htmlProduct.select("div.product-carousel>img");                                              //достаем img
+        Elements code = htmlProduct.select("div.product-carousel>img");
 
         System.out.println(code.attr("src"));
-        return code.attr("src");                                                                                   //возвращаем ссылку
+        return code.attr("src");
     }
 }
