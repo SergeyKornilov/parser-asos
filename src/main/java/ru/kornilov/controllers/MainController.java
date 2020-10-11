@@ -47,7 +47,7 @@ public class MainController {
     public String parse(@RequestParam String url,
                         @RequestParam String domainName,
                         Map<String, Object> model){
-        if (url != "") {
+        if (url != "") {                                                                        //???логика в контроллере
             pageService.setUrlEnter(url);
             pageService.start();
         }
@@ -69,8 +69,14 @@ public class MainController {
 
         domainService.deleteDomain(nameDomain);
 
-
         return "redirect:/service";
     }
 
+    @GetMapping("/service/domain-form")
+    public String domainForm(@ModelAttribute("id") int idDomain, Map<String, Object> model){
+
+            model.put("domain", domainRepo.findById(idDomain));
+
+        return "domain-form";
+    }
 }

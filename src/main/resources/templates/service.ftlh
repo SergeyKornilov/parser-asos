@@ -22,6 +22,7 @@
             <li>
                 ${domain.nameDomain}
                 <a href="/service/delete?name=${domain.nameDomain}">DELETE</a>
+                <a href="/service/domain-form?id=${domain.id}">CHANGE</a>
             </li>
         </ul>
     </#list>
