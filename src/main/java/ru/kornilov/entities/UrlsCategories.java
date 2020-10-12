@@ -10,8 +10,14 @@ public class UrlsCategories {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "domain_id")
-    private String domainId;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "domainId")
+    private Domain domain;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "categoryId")
+    private Category category;
+
 
     @Column(name = "category_url")
     private String categoryUrl;
