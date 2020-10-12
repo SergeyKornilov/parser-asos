@@ -5,8 +5,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import ru.kornilov.entities.Category;
 import ru.kornilov.entities.Domain;
 import ru.kornilov.entities.Product;
+import ru.kornilov.repos.CategoryRepo;
 import ru.kornilov.repos.DomainRepo;
 import ru.kornilov.repos.ProductsRepo;
 import ru.kornilov.service.DomainService;
@@ -25,6 +27,8 @@ public class MainController {
     private DomainService domainService;
     @Autowired
     private DomainRepo domainRepo;
+    @Autowired
+    private CategoryRepo categoryRepo;
 
     @GetMapping
     public String greeting(Map<String, Object> model) {
@@ -38,6 +42,9 @@ public class MainController {
     @GetMapping("/service")
     public String service(Map<String, Object> model){
 
+
+        Iterable<Category> categories = categoryRepo.findAll();
+        model.put("categories", categories);
         Iterable<Domain> domains = domainRepo.findAll();
         model.put("domains", domains);
 
@@ -47,12 +54,12 @@ public class MainController {
     public String parse(@RequestParam String url,
                         @RequestParam String domainName,
                         Map<String, Object> model){
-        if (url != "") {                                                                        //???логика в контроллере
+        if (url.equals("")) {                                                                        //???логика в контроллере
             pageService.setUrlEnter(url);
             pageService.start();
         }
 
-        if (domainName != "") {
+        if (domainName.equals("")) {
             Domain domain = new Domain();
             domain.setNameDomain(domainName);
             domainService.addDomain(domain);
